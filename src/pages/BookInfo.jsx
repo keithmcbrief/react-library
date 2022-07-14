@@ -6,9 +6,16 @@ import Price from "../components/ui/Price";
 import Rating from "../components/ui/Rating";
 import Books from "./Books";
 
-const BookInfo = ( { books, addToCart } ) => {
+const BookInfo = ({ books, addToCart }) => {
   const { id } = useParams();
   const book = books.find((book) => +book.id == +id);
+  const [added, setAdded] = React.useState(false);
+
+  function addBookToCart(book) {
+    setAdded(true);
+    addToCart(book);
+  }
+
   return (
     <div id="books__body">
       <main id="books__main">
@@ -50,9 +57,13 @@ const BookInfo = ( { books, addToCart } ) => {
                     delectus nisi soluta quos.
                   </p>
                 </div>
-                <button 
-                className="btn"
-                onClick={() => addToCart(book)}>Add to Cart</button>
+                {added ? (
+                  <button className="btn">Checkout</button>
+                ) : (
+                  <button className="btn" onClick={() => addBookToCart(book)}>
+                    Add to Cart
+                  </button>
+                )}
               </div>
             </div>
           </div>
