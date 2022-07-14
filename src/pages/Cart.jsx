@@ -1,16 +1,21 @@
 import React from "react";
 
 const Cart = ({ cart, changeQuantity }) => {
-    const total = () => {
-        let price = 0
-        cart.forEach(item => {
-            price += (item.salePrice || item.originalPrice).toFixed(2)
-        })
-        return price
-    }
-    const subTotal = () => {
+  const [total, setTotal] = React.useState();
 
-    }
+  React.useEffect(() => {
+    let price = 0;
+    cart.forEach((item) => {
+      price += +(item.salePrice || item.originalPrice).toFixed(2);
+    });
+    setTotal(price);
+  }, [cart]);
+
+  const total = () => {
+    
+    return price;
+  };
+
   return (
     <div id="books__body">
       <main id="books__main">
@@ -51,11 +56,18 @@ const Cart = ({ cart, changeQuantity }) => {
                           min={0}
                           max={99}
                           className="cart__input"
-                          onChange={(event) => changeQuantity(book, event.target.value)}
+                          onChange={(event) =>
+                            changeQuantity(book, event.target.value)
+                          }
                           value={book.quantity}
                         />
                       </div>
-                      <div className="cart__total">${((book.salePrice || book.originalPrice) * book.quantity).toFixed(2)}</div>
+                      <div className="cart__total">
+                        $
+                        {(
+                          (book.salePrice || book.originalPrice) * book.quantity
+                        ).toFixed(2)}
+                      </div>
                     </div>
                   );
                 })}
