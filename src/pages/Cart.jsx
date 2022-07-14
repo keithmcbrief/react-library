@@ -1,6 +1,16 @@
 import React from "react";
 
 const Cart = ({ cart, changeQuantity }) => {
+    const total = () => {
+        let price = 0
+        cart.forEach(item => {
+            price += (item.salePrice || item.originalPrice).toFixed(2)
+        })
+        return price
+    }
+    const subTotal = () => {
+
+    }
   return (
     <div id="books__body">
       <main id="books__main">
