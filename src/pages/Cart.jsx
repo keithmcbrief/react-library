@@ -21,15 +21,15 @@ const Cart = ({ cart }) => {
                     <div className="cart__item">
                       <div className="cart__book">
                         <img
-                          src="https://covers.openlibrary.org/b/id/7737110-L.jpg"
+                          src={book.url}
                           className="cart__book--img"
                           alt=""
                         />
                         <div className="cart__book--info">
                           <span className="cart__book--title">
-                            Crack the coding interview
+                            {book.title}
                           </span>
-                          <span className="cart__book--price">$10.00</span>
+                          <span className="cart__book--price">{book.salePrice || book.originalPrice}</span>
                           <button className="cart__book--remove">Remove</button>
                         </div>
                       </div>
