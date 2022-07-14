@@ -29,7 +29,9 @@ const Cart = ({ cart }) => {
                           <span className="cart__book--title">
                             {book.title}
                           </span>
-                          <span className="cart__book--price">{book.salePrice || book.originalPrice}</span>
+                          <span className="cart__book--price">
+                            ${(book.salePrice || book.originalPrice).toFixed(2)}
+                          </span>
                           <button className="cart__book--remove">Remove</button>
                         </div>
                       </div>
