@@ -2,7 +2,11 @@ import React from "react";
 import "./App.css";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import Books from "./pages/Books";
 import { books } from "./data";
@@ -29,14 +33,26 @@ function App() {
     );
   }
 
+  function removeItem(item) {
+    setCart(cart.filter(book => book.id !== item.id))
+  }
+
+  function numberOfItems() {
+    let counter = 0
+    cart.forEach(item=> {
+      counter += item.quantity
+    })
+    return counter
+  }
+
   React.useEffect(() => {
     console.log(cart);
   }, [cart]);
 
   return (
-    <Router>
+    <BrowserRouter>
       <div className="App">
-        <Nav />
+        <Nav numberOfItems={numberOfItems()} />
         <Routes>
           <Route path="/" exact component={Home} />
           <Route path="/books" exact render={() => <Books books={books} />} />
@@ -49,13 +65,17 @@ function App() {
           <Route
             path="/cart"
             render={() => (
-              <Cart books={books} cart={cart} changeQuantity={changeQuantity} />
+              <Cart 
+              books={books} 
+              cart={cart} 
+              changeQuantity={changeQuantity}
+              removeItem={removeItem} />
             )}
           />
         </Routes>
         <Footer />
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 
