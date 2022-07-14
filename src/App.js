@@ -17,17 +17,16 @@ function App() {
   }
 
   function changeQuantity(book, quantity) {
-    setCart(cart.map(item => {
-      if (item.id === book.id) {
-        return {
-          ...item,
-          quantity: quantity
-        }
-      }
-      else {
-        return item
-      }
-    }))
+    setCart(
+      cart.map((item) => {
+        return item.id === book.id
+          ? {
+              ...item,
+              quantity: +quantity,
+            }
+          : item;
+      })
+    );
   }
 
   React.useEffect(() => {
@@ -46,7 +45,12 @@ function App() {
             <BookInfo books={books} addToCart={addToCart} cart={cart} />
           )}
         />
-        <Route path="/cart" render={() => <Cart books={books} cart={cart} changeQuantity={changeQuantity}/>} />
+        <Route
+          path="/cart"
+          render={() => (
+            <Cart books={books} cart={cart} changeQuantity={changeQuantity} />
+          )}
+        />
         <Footer />
       </div>
     </Router>
