@@ -6,13 +6,24 @@ import Rating from "./Rating";
 const Book = ({ book }) => {
   const [img, setImg] = React.useState();
 
+  // When we switch routes dont set image to unmounted component
+  const mountedRef = React.useRef(true);
+
   React.useEffect(() => {
     const image = new Image();
     image.src = book.url;
     image.onload = () => {
-      setImg(image);
+      setTimeout(() => {
+        if (mountedRef.current) {
+          setImg(image);
+        }
+      }, 300);
     };
-  });
+    return () => {
+      // When the component unmounts 
+      mountedRef.current = false;
+    };
+  }, [book.url]);
 
   return (
     <div className="book">

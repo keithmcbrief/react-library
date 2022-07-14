@@ -14,7 +14,7 @@ import {
   faTags,
   faStar,
   faStarHalfAlt,
-  faArrowLeft
+  faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
