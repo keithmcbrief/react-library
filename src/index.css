@@ -624,11 +624,13 @@ select {
 }
 
 .book__summary--title {
+  text-align: left;
   margin-bottom: 8px;
 }
 
 .book__summary--para {
   margin-bottom: 16px;
+  text-align: left;
 }
 
 .book__price {
