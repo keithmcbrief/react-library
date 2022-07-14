@@ -48,7 +48,7 @@ function App() {
         <Route
           path="/cart"
           render={() => (
-            <Cart books={books} cart={cart} changeQuantity={changeQuantity} quantity={books.quantity} />
+            <Cart books={books} cart={cart} changeQuantity={changeQuantity} />
           )}
         />
         <Footer />
