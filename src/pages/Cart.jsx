@@ -4,9 +4,13 @@ const Cart = ({ cart, changeQuantity }) => {
   const total = () => {
     let price = 0;
     cart.forEach((item) => {
-      price += +(item.salePrice || item.originalPrice * item.quantity).toFixed(2);
+      price += +(item.salePrice || item.originalPrice * item.quantity);
     });
     return price
+  }
+
+  function removeBook() {
+    
   }
 
   return (
@@ -15,7 +19,7 @@ const Cart = ({ cart, changeQuantity }) => {
         <div className="books__container">
           <div className="row">
             <div className="books__selected--top">
-              <h2 className="cart__title"></h2>
+              <h2 className="cart__title">Cart</h2>
             </div>
             <div className="cart">
               <div className="cart__header">
@@ -40,7 +44,9 @@ const Cart = ({ cart, changeQuantity }) => {
                           <span className="cart__book--price">
                             ${(book.salePrice || book.originalPrice).toFixed(2)}
                           </span>
-                          <button className="cart__book--remove">Remove</button>
+                          <button 
+                          className="cart__book--remove"
+                          onClick={removeBook}>Remove</button>
                         </div>
                       </div>
                       <div className="cart__quantity">
@@ -68,11 +74,11 @@ const Cart = ({ cart, changeQuantity }) => {
             </div>
             <div className="total__item total__sub-total">
               <span>Subtotal</span>
-              <span>$9.00</span>
+              <span>${(total() * 0.9).toFixed(2)}</span>
             </div>
             <div className="total__item total__tax">
               <span>Tax</span>
-              <span>$1.00</span>
+              <span>${(total() * 0.1).toFixed(2)}</span>
             </div>
             <div className="total__item total__price">
               <span>Total</span>
