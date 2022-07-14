@@ -4,7 +4,7 @@ const Cart = ({ cart, changeQuantity }) => {
   const total = () => {
     let price = 0;
     cart.forEach((item) => {
-      price += +(item.salePrice || item.originalPrice).toFixed(2);
+      price += +(item.salePrice || item.originalPrice * item.quantity).toFixed(2);
     });
     return price
   }
