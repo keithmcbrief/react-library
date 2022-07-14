@@ -30,7 +30,7 @@ function App() {
           path="/books/:id"
           render={() => <BookInfo books={books} addToCart={addToCart} cart={cart} />}
         />
-        <Route path="/cart" render={() => <Cart books={books} />} />
+        <Route path="/cart" render={() => <Cart books={books} cart={cart} />} />
         <Footer />
       </div>
     </Router>
