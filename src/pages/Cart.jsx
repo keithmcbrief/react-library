@@ -12,7 +12,7 @@ const Cart = ({ cart, changeQuantity }) => {
   }, [cart]);
 
   const total = () => {
-    
+
     return price;
   };
 
@@ -83,7 +83,7 @@ const Cart = ({ cart, changeQuantity }) => {
             </div>
             <div className="total__item total__price">
               <span>Total</span>
-              <span>$10.00</span>
+              <span>${total}</span>
             </div>
             <button
               className="btn btn__checkout no-cursor"
