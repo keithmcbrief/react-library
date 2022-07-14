@@ -1,20 +1,13 @@
 import React from "react";
 
 const Cart = ({ cart, changeQuantity }) => {
-  const [total, setTotal] = React.useState();
-
-  React.useEffect(() => {
+  const total = () => {
     let price = 0;
     cart.forEach((item) => {
       price += +(item.salePrice || item.originalPrice).toFixed(2);
     });
-    setTotal(price);
-  }, [cart]);
-
-  const total = () => {
-
-    return price;
-  };
+    return price
+  }
 
   return (
     <div id="books__body">
