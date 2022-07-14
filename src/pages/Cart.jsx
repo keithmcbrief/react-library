@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cart = ({ cart, changeQuantity }) => {
+const Cart = ({ cart, changeQuantity, quantity }) => {
   return (
     <div id="books__body">
       <main id="books__main">
@@ -30,7 +30,7 @@ const Cart = ({ cart, changeQuantity }) => {
                             {book.title}
                           </span>
                           <span className="cart__book--price">
-                            ${(book.salePrice || book.originalPrice).toFixed(2)}
+                            ${((book.salePrice || book.originalPrice) * book.quantity).toFixed(2)}
                           </span>
                           <button className="cart__book--remove">Remove</button>
                         </div>
