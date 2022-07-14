@@ -16,7 +16,6 @@ function App() {
       setCart([...cart, book]);
     }
   
-
   React.useEffect(() => {
     console.log(cart);
   }, [cart]);
