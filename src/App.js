@@ -17,7 +17,7 @@ function App() {
   }
 
   function changeQuantity(book) {
-    
+
   }
 
   React.useEffect(() => {
@@ -36,7 +36,7 @@ function App() {
             <BookInfo books={books} addToCart={addToCart} cart={cart} />
           )}
         />
-        <Route path="/cart" render={() => <Cart books={books} cart={cart} />} />
+        <Route path="/cart" render={() => <Cart books={books} cart={cart} changeQuantity={changeQuantity}/>} />
         <Footer />
       </div>
     </Router>
