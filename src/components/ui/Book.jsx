@@ -6,7 +6,6 @@ import Rating from "./Rating";
 const Book = ({ book }) => {
   const [img, setImg] = React.useState();
 
-  // When we switch routes dont set image to unmounted component
   const mountedRef = React.useRef(true);
 
   React.useEffect(() => {
